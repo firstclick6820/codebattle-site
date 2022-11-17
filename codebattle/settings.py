@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4qsd7u+!)6b=7u@zv_te936h@k^xqxav7eej)$(8_l$ij-&_uq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['codebattle-site.herokuapp.com', 'localhost', '127.0.0.1']
 
