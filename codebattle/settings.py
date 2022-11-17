@@ -19,7 +19,6 @@ ALLOWED_HOSTS = ['codebattle-site.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 
-
 AUTH_USER_MODEL = 'base.User'
 
 # Application definition
