@@ -1,0 +1,84 @@
+{% extends "main.html" %}
+
+
+
+{% block content %}
+
+
+<div class="section">
+
+    <h1>Event Page </h1>
+
+    
+
+    {% comment %} Check if the user is already reigstered for the event {% endcomment %}
+   
+    {% comment %} {% if event.participants.first != request.user %}
+        <a href="{% url 'event_registration' event.id %}">Register For The Event</a>
+
+
+    {% endif %} {% endcomment %}
+
+
+
+    <div id="event--action--wrapper" class='section'>
+
+        {% comment %} Check if the user is already registered for the event, this version of checking is in the db and more consise {% endcomment %}
+        {% if not registered %}
+            <a href="{% url 'event_registration' event.id %} " class="btn btn-primary">Register</a>
+        {% else %}
+            <p class='text-success'>Already Registered! </p>
+            
+        {% endif %} 
+
+        {% comment %} Check if the event is already submitted  {% endcomment %}
+        {% if not submitted %}
+            <a href="{% url 'project_submission' event.id %}" class="btn btn-primary">Submit Project</a>
+        {% else %}
+            <p class='text-success'> || Already Submitted</p>
+        
+        {% endif %}
+
+    </div>
+
+
+    <h3> {{event.name}} </h3>
+
+    <div class='section'>
+        <p>{{ event.description|linebreaks|urlize}}</p>
+    </div>
+
+          
+
+    <div class="section">
+
+        <h3>Event Participants</h3>
+
+
+        <div class="users-lists section">
+            {% for user in event.participants.all %}
+                <a href="{% url 'profile' user.id %}">
+                    <div class="wrapper-user">
+                        <img src="{{user.avatar.url}}" class="user--avatar--sm">
+                        {{ user.name }}
+                    </div>
+                </a>
+
+            {% endfor %}
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+
+
+
+
+

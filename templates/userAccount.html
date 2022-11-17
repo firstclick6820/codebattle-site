@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+
+
+
+
+{% block content %}
+
+    <div class="section">
+
+        <h1>User Account </h1>
+        {% comment %} Rendering All The Events that a user has been registered {% endcomment %}
+
+
+        <div class="section">
+            {% comment %} Retriewe all the events {% endcomment %}
+            <h2>My Events</h2>
+            {% for event in request.user.event_set.all %}
+                <p><a href="{% url 'event_page' event.id %}">{{ event.name }}</a><p>
+            {% endfor %}
+        </div>
+
+
+        <div class="section">
+            {% comment %} retreiew all the submissions {% endcomment %}
+            <h2>My Submission </h2>
+            {% for submission in request.user.submission_set.all %}
+                <p><a href="{% url 'update_submission' submission.id %}">{{ submission.event.name}}<p></a>
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+
+
+{% endblock content %}
+
+
+
+
+

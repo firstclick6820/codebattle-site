@@ -1,0 +1,66 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="section">
+    <h1>Home Page </h1>
+
+
+    <section>
+        {% for message in messages %}
+                <h6>{{ message}}</h6>
+        {% endfor %}
+
+    </section>
+
+
+
+    <section>
+        <h3>Events</h3>
+
+
+        <div class="events-lists section">
+            {% for event in events %}
+                <a href={% url 'event_page' event.id %}>
+                    <div class='wrapper-event'>
+                        <h3>{{ event.name }}</h3>
+                        <p>{{event.participants.count}} registered.</p>
+                        <p>Registration Deadline: {{event.event_deadline}} </p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h3>Users</h3>
+
+
+        <div class="users-lists section">
+            {% for user in users %}
+                <a href="{% url 'profile' user.id %}">
+                    <div class="wrapper-user">
+                        <img src="{{user.avatar.url}}" class="user--avatar--sm">
+                        {{ user.name }}
+                    </div>
+                </a>
+
+            {% endfor %}
+        </div>
+
+
+
+
+    </section>
+</div>
+
+{% endblock  %}
+
+
+
+
